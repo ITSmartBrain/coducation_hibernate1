@@ -8,13 +8,11 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Product {
+public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
     private String name;
-    private int price;
-    private int count;
-    private double rating;
+    private int cashback;
 }
 

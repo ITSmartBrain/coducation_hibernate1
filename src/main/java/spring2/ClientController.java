@@ -1,5 +1,6 @@
 package spring2;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,22 +12,20 @@ import java.util.List;
 import java.util.Random;
 
 @RestController
+@RequiredArgsConstructor
 public class ClientController {
 
-    @Autowired
-    private ProductStore productStore;
+    private final ProductRepository productRepository;
 
-    @Autowired
-    private Random rnd;
 
-    @PostMapping("/client/buy/{name}")
-    public void buy(@PathVariable String name){
-        productStore.buy(name);
-    }
+//    @PostMapping("/client/buy/{name}")
+//    public void buy(@PathVariable String name){
+//        productStore.buy(name);
+//    }
 
     @GetMapping("/client/store")
     public List<Product> getAll(){
-        return productStore.getProducts();
+        return productRepository.findAll();
     }
 
 }
