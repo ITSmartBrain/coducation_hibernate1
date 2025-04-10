@@ -19,10 +19,10 @@ import java.util.List;
 @RequestMapping("/api/user/books")
 //@RequiredArgsConstructor
 public class UserBookController {
-    @Qualifier("userBookService")
+
     private final BookService bookService;
 
-    public UserBookController(BookService bookService) {
+    public UserBookController(@Qualifier("userBookService") BookService bookService) {
         this.bookService = bookService;
     }
 

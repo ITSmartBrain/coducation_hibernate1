@@ -2,6 +2,8 @@ package spring3_dao.dto;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class UserResponseDto {
     private Long id;

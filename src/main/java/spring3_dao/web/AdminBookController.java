@@ -21,10 +21,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/admin/books")
 public class AdminBookController {
-    @Qualifier("adminBookService")
+
     private final BookService bookService;
 
-    public AdminBookController(BookService bookService) {
+    public AdminBookController(@Qualifier("adminBookService") BookService bookService) {
         this.bookService = bookService;
     }
 

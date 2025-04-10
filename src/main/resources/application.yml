@@ -12,4 +12,4 @@ spring:
 #    если хотите указать свою схему
     properties:
       hibernate:
-        default_schema: spring_repo
+        default_schema: spring_dao
