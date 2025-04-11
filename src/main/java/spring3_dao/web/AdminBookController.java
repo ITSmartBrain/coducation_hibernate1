@@ -1,7 +1,6 @@
 package spring3_dao.web;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,49 +19,47 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/books")
+@RequiredArgsConstructor
 public class AdminBookController {
 
-    private final BookService bookService;
+    private final BookService adminBookService;
 
-    public AdminBookController(@Qualifier("adminBookService") BookService bookService) {
-        this.bookService = bookService;
-    }
 
     @GetMapping
     public ResponseEntity<List<BookResponseDto>> getAllBooks() {
-        return ResponseEntity.ok(bookService.findAll());
+        return ResponseEntity.ok(adminBookService.findAll());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<BookResponseDto> getBook(@PathVariable Long id) {
-        return ResponseEntity.ok(bookService.findById(id));
+        return ResponseEntity.ok(adminBookService.findById(id));
     }
 
     @PostMapping
     public ResponseEntity<BookResponseDto> addBook(@RequestBody BookRequestDto requestDto) {
-        return ResponseEntity.ok(bookService.save(requestDto));
+        return ResponseEntity.ok(adminBookService.save(requestDto));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<BookResponseDto> updateBook(
             @PathVariable Long id,
             @RequestBody BookRequestDto requestDto) {
-        return ResponseEntity.ok(bookService.update(id, requestDto));
+        return ResponseEntity.ok(adminBookService.update(id, requestDto));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
-        bookService.deleteById(id);
+        adminBookService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/borrow")
     public ResponseEntity<BookResponseDto> borrowBook(@RequestBody BorrowRequestDto requestDto) {
-        return ResponseEntity.ok(bookService.borrowBook(requestDto));
+        return ResponseEntity.ok(adminBookService.borrowBook(requestDto));
     }
 
     @PostMapping("/{id}/return")
     public ResponseEntity<BookResponseDto> returnBook(@PathVariable Long id) {
-        return ResponseEntity.ok(bookService.returnBook(id));
+        return ResponseEntity.ok(adminBookService.returnBook(id));
     }
 }
