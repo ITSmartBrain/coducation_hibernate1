@@ -9,6 +9,7 @@ import spring4_security_basic.domain.BookRepository;
 import spring4_security_basic.dto.BookRequestDto;
 import spring4_security_basic.dto.BookResponseDto;
 import spring4_security_basic.dto.BorrowRequestDto;
+import spring4_security_basic.dto.UserRequestDto;
 import spring4_security_basic.exception.BookAlreadyAvailableException;
 import spring4_security_basic.exception.BookNotAvailableException;
 import spring4_security_basic.exception.BookNotFoundException;
@@ -95,6 +96,11 @@ public class AdminBookServiceImpl implements BookService {
         book.setDueDate(null);
 
         return convertToDto(bookRepository.save(book));
+    }
+
+    @Override
+    public void addUser(UserRequestDto userDto) {
+        throw new RuntimeException("Not implemented yet");
     }
 
     private BookResponseDto convertToDto(Book book) {

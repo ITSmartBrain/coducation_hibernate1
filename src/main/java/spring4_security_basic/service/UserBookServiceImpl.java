@@ -2,6 +2,7 @@ package spring4_security_basic.service;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import spring4_security_basic.domain.Book;
@@ -11,6 +12,7 @@ import spring4_security_basic.domain.UserRepository;
 import spring4_security_basic.dto.BookRequestDto;
 import spring4_security_basic.dto.BookResponseDto;
 import spring4_security_basic.dto.BorrowRequestDto;
+import spring4_security_basic.dto.UserRequestDto;
 import spring4_security_basic.exception.BookAlreadyAvailableException;
 import spring4_security_basic.exception.BookNotAvailableException;
 import spring4_security_basic.exception.BookNotFoundException;
@@ -97,6 +99,14 @@ public class UserBookServiceImpl implements BookService {
         book.setDueDate(null);
 
         return convertToDto(bookRepository.save(book));
+    }
+
+    @Transactional
+    public void addUser(UserRequestDto userDto){
+        User user = modelMapper.map(userDto, User.class);
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        user.setPassword(encoder.encode(user.getPassword()));
+        userRepository.save(user);
     }
 
     private BookResponseDto convertToDto(Book book) {

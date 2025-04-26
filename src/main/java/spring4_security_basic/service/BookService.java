@@ -3,6 +3,7 @@ package spring4_security_basic.service;
 import spring4_security_basic.dto.BookRequestDto;
 import spring4_security_basic.dto.BookResponseDto;
 import spring4_security_basic.dto.BorrowRequestDto;
+import spring4_security_basic.dto.UserRequestDto;
 
 import java.util.List;
 
@@ -14,4 +15,5 @@ public interface BookService {
     void deleteById(Long id);
     BookResponseDto borrowBook(BorrowRequestDto requestDto);
     BookResponseDto returnBook(Long bookId);
+    void addUser(UserRequestDto userDto);
 }
