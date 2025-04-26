@@ -14,9 +14,9 @@ spring:
       hibernate:
         default_schema: spring_dao
 
-# Настройки безопасности
-security:
-  user:
-    name: admin  # Дефолтный пользователь (можно удалить, если используем только БД)
-    password: password
-    roles: ADMIN
+## Настройки безопасности
+#security:
+#  user:
+#    name: admin  # Дефолтный пользователь (можно удалить, если используем только БД)
+#    password: password
+#    roles: ADMIN
