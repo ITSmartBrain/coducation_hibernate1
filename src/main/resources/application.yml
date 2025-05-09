@@ -20,3 +20,7 @@ security:
     name: admin  # Дефолтный пользователь (можно удалить, если используем только БД)
     password: password
     roles: ADMIN
+
+jwt:
+  security:
+    key: hello_world
